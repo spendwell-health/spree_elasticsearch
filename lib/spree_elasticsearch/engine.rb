@@ -22,7 +22,7 @@ module SpreeElasticsearch
     config.after_initialize do
       begin
         if Spree::ElasticsearchSettings.bootstrap
-          client = Elasticsearch::Client.new log: true, hosts: Spree::ElasticsearchSettings.hosts
+          client = Elasticsearch::Client.new log: false, hosts: Spree::ElasticsearchSettings.hosts
           # create the index, but continue when it already exists
           begin
             client.indices.create index: Spree::ElasticsearchSettings.index, body: { }
